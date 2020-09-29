@@ -1,0 +1,36 @@
+<div class="create-course-container">
+    <div>
+        <h4> Create Course </h4>
+    </div>
+
+   
+
+   <form class="example-form">
+
+    <div>
+      <label for="title"> Title </label>
+      <input type = "text" [(ngModel)]="createNewCourse.title" name="title"> 
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="createNewCourse.created_at" name="created_date" (dateChange) = "test($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose duration for course</mat-label>
+        <mat-select [(ngModel)]="createNewCourse.duration" name = "duration">
+          <mat-option value="30"> 30 days </mat-option>
+          <mat-option value="45"> 45 days </mat-option>
+          <mat-option value="60"> 60 days</mat-option>
+        </mat-select>
+      </mat-form-field>
+     </div>
+  </form>
+
+  <button (click)="createCourse()"> create </button>
+   
+</div>

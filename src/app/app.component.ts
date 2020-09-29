@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseOpService } from './database-op.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'coursecatalog';
+
+  constructor(
+    public databaseOpService:DatabaseOpService
+  ){}
+
+  ngOnInit() {
+    
+  }
+  
 }
+
+
