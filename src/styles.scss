@@ -10,3 +10,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --background-color:#f5f6f8;
     --button-color:#459df7;
 }
+
+.row{
+    display: flex;
+    align-items: center;
+}
+
+.col-6{
+    width: 50%;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
+.mat-input-wrapper {
+    background: transparent;
+}
+body{
+    background: var(--background-color);
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex{
+    padding-top: 0px !important;
+}

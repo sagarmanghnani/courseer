@@ -4,4 +4,5 @@ export class User {
     roles:string;
     created_at:string;
     updated_at:string;
+    id:string;
 }

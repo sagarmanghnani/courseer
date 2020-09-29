@@ -1,0 +1,39 @@
+.create-course-container{
+    width: 100%;
+}
+
+h3{
+    margin-bottom: 0;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.input-setup{
+    box-sizing: border-box;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    width: 100%;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.course-duration{
+    margin-top: 10px;
+}
+
+.create-course{
+    background: var(--button-color);
+    color: white;
+    margin-top: 20px;
+    // border: 1px solid var(--button-color);
+}
+
+.course-description{
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    width: 100%;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Courses } from 'src/Courses';
 import {UtilsService} from '../utils.service'
 import { DatabaseOpService } from '../database-op.service';
+import { User } from 'src/User';
 @Component({
   selector: 'app-create-course',
   templateUrl: './create-course.component.html',
@@ -10,27 +11,34 @@ import { DatabaseOpService } from '../database-op.service';
 export class CreateCourseComponent implements OnInit {
 
   constructor(
-    public databaseOp:DatabaseOpService
+    public databaseOp:DatabaseOpService,
+    public utilService:UtilsService
   ) { }
   createNewCourse:Courses = new Courses();
+  instructors:User[] = [];
   ngOnInit(): void {
     this.getInstructors();
   }
 
   createCourse(){
-    console.log(this.createNewCourse, "new course");
+    let utcDatetime = UtilsService.sendUtcTime(this.createNewCourse.created_at);
+    this.createNewCourse.start_date = utcDatetime;
+    this.createNewCourse.created_at = UtilsService.currentDateTime();
+    this.createNewCourse.updated_at = UtilsService.currentDateTime();
+    this.databaseOp.createNewCourse(this.createNewCourse).then(res => {
+      this.utilService.openSnackBar("Course created successfully");
+    })
   }
 
-  test(event){
-    let date = new Date(event.value);
-    this.createNewCourse.created_at = UtilsService.fromDateToUserReadable(date);
-  }
+  
 
   getInstructors(){
     this.databaseOp.getInstructors().subscribe(res => {
-      console.log(res, "res");
+      this.instructors = res;
     })
   }
+
+
 
 
 }

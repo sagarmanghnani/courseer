@@ -19,6 +19,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
+import { MatButtonModule } from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {MatSelectModule} from '@angular/material/select'
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [
     DatabaseOpService

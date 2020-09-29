@@ -10,4 +10,5 @@ export class Courses {
     category_ids:string[];
     duration:number;
     description:string;
+    start_date:string;
 }

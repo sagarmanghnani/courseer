@@ -14,12 +14,13 @@ export class DatabaseOpService {
   ) { }
 
   createNewCourse(course:Courses){
+    course = {...course}
     return new Promise((resolve, reject) => {
       this.firestore.collection('Courses').add(course).then(() => {
-        alert("Successfully added Course");
+        resolve();
       },
       (err) => {
-        alert(`Failed adding course ${err}`);
+        reject();
       }
       )
     })
@@ -27,7 +28,7 @@ export class DatabaseOpService {
 
 
   getInstructors():Observable<User[]>{
-    return this.firestore.collection<User>("User", ref => ref.where('roles', 'array-contains', Constants.USER_ROLE_CONSTRUCTOR)).valueChanges().pipe()
+    return this.firestore.collection<User>("User", ref => ref.where('roles', 'array-contains', Constants.USER_ROLE_CONSTRUCTOR)).valueChanges({idField: 'id'}).pipe()
   }
 
 }
