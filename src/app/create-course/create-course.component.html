@@ -34,15 +34,28 @@
       </div>
     </div>
 
-     <div *ngIf="instructors?.length" class="col-6 course-duration" >
-      <h3> Choose Instructor </h3> 
-      <mat-form-field appearance="fill">
-        <!-- <mat-label>Choose Instructor</mat-label> -->
-        <mat-select [(ngModel)]="createNewCourse.duration" name = "duration">
-          <mat-option *ngFor="let user of instructors" [value]="user.id" > {{user?.name}} </mat-option>
-        </mat-select>
-      </mat-form-field>
-     </div>
+    <div class="row">
+      <div *ngIf="instructors?.length" class="col-6 course-duration" >
+       <h3> Choose Instructor </h3> 
+       <mat-form-field appearance="fill">
+         <!-- <mat-label>Choose Instructor</mat-label> -->
+         <mat-select [(ngModel)]="createNewCourse.duration" name = "duration">
+           <mat-option *ngFor="let user of instructors" [value]="user.id" > {{user?.name}} </mat-option>
+         </mat-select>
+       </mat-form-field>
+      </div>
+
+      <div *ngIf="allCategory?.length" class="col-6 course-duration">
+        <h3> Choose Categories </h3> 
+        <mat-form-field appearance="fill">
+          <!-- <mat-label>Select Categ</mat-label> -->
+          <mat-select [(ngModel)] = "selectedCategories" multiple>
+            <mat-option *ngFor="let category of allCategory" [value]="category">{{category.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
 
      <div>
        <h3> Description </h3>

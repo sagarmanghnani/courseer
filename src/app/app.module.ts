@@ -21,11 +21,13 @@ import { MatInputModule } from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { SearchCatalogComponent } from './search-catalog/search-catalog.component'
 @NgModule({
   declarations: [
     AppComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    SearchCatalogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule
   ],
   providers: [
     DatabaseOpService

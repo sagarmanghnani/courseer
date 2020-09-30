@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {Courses} from '../Courses'
+import {Courses} from '../Courses';
+import {Category} from '../Category';
 import { User } from 'src/User';
 import {Constants} from './Constants'
 @Injectable({
@@ -29,6 +30,10 @@ export class DatabaseOpService {
 
   getInstructors():Observable<User[]>{
     return this.firestore.collection<User>("User", ref => ref.where('roles', 'array-contains', Constants.USER_ROLE_CONSTRUCTOR)).valueChanges({idField: 'id'}).pipe()
+  }
+
+  getAllCatalogues():Observable<Category[]> {
+    return this.firestore.collection<Category>("Category").valueChanges({idField: 'id'}).pipe();
   }
 
 }
