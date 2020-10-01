@@ -39,7 +39,7 @@
        <h3> Choose Instructor </h3> 
        <mat-form-field appearance="fill">
          <!-- <mat-label>Choose Instructor</mat-label> -->
-         <mat-select [(ngModel)]="createNewCourse.duration" name = "duration">
+         <mat-select [(ngModel)]="createNewCourse.instructor_ids" name = "instructors" multiple> 
            <mat-option *ngFor="let user of instructors" [value]="user.id" > {{user?.name}} </mat-option>
          </mat-select>
        </mat-form-field>

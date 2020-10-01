@@ -3,6 +3,7 @@ import { Courses } from 'src/Courses';
 import {UtilsService} from '../utils.service'
 import { DatabaseOpService } from '../database-op.service';
 import { User } from 'src/User';
+import { Category } from 'src/Category';
 @Component({
   selector: 'app-create-course',
   templateUrl: './create-course.component.html',
@@ -15,9 +16,12 @@ export class CreateCourseComponent implements OnInit {
     public utilService:UtilsService
   ) { }
   createNewCourse:Courses = new Courses();
+  allCategory:Category[] = [];
   instructors:User[] = [];
+  selectedCategories:string[] = [];
   ngOnInit(): void {
     this.getInstructors();
+    this.getAllCategories();
   }
 
   createCourse(){
@@ -30,13 +34,19 @@ export class CreateCourseComponent implements OnInit {
     })
   }
 
-  
+  getAllCategories(){
+    this.databaseOp.getAllCatalogues().subscribe(res => {
+      this.allCategory = res;
+    })
+  }
 
   getInstructors(){
     this.databaseOp.getInstructors().subscribe(res => {
       this.instructors = res;
     })
   }
+
+  
 
 
 

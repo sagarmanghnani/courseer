@@ -1,0 +1,5 @@
+<div *ngIf="allCourses?.length" class="row">
+    <div *ngFor="let course of allCourses" class="col-4">
+        <app-select-course [showCourse] = "course" [instructorInfo] = "getCourseInstructor(course.instructor_ids)"></app-select-course>
+    </div>
+</div>

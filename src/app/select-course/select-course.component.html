@@ -1,1 +1,18 @@
-<p>select-course works!</p>
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar class="avatar-setting"></div>
+        <mat-card-title> {{showCourse?.title}} </mat-card-title>
+        <mat-card-subtitle>
+            {{getInstructorNames()}}
+         </mat-card-subtitle>  
+    </mat-card-header>
+    <img [src]="getCourseImageSource()">
+    <mat-card-content>
+        <p> {{showCourse?.description}} </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-stroked-button class="secondary-button"> Show more.. </button>
+        <button mat-raised-button class="primary-button"> Buy now  </button>
+    </mat-card-actions>
+</mat-card>

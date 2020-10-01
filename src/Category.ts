@@ -5,5 +5,5 @@ export class Category {
     name:string;
     created_at:string;
     updated_at:string;
-    courses:Courses[]
+    courses:string[]
 }

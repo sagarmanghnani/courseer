@@ -22,12 +22,17 @@ import {MatSelectModule} from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { SearchCatalogComponent } from './search-catalog/search-catalog.component'
+import { SearchCoursesComponent } from './search-courses/search-courses.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SelectCourseComponent } from './select-course/select-course.component';
+import { ShowCoursesComponent } from './show-courses/show-courses.component';
 @NgModule({
   declarations: [
     AppComponent,
     CreateCourseComponent,
-    SearchCatalogComponent
+    SearchCoursesComponent,
+    SelectCourseComponent,
+    ShowCoursesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import { SearchCatalogComponent } from './search-catalog/search-catalog.componen
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCheckboxModule
   ],
   providers: [
     DatabaseOpService

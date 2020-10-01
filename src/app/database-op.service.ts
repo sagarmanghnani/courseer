@@ -36,4 +36,12 @@ export class DatabaseOpService {
     return this.firestore.collection<Category>("Category").valueChanges({idField: 'id'}).pipe();
   }
 
+  getAllCourses():Observable<Courses[]> {
+    return this.firestore.collection<Courses>("Courses").valueChanges({idField: 'id'}).pipe();
+  }
+
+  getUserByUserId(userId:string):Observable<User>{
+    return this.firestore.collection<User>("User").doc<User>(`User/${userId}`).valueChanges();
+  }
+
 }

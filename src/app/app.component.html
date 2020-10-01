@@ -2,11 +2,20 @@
 
 
 <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+    <mat-drawer mode="side" opened>
+        <div (click)="showOptions('1')">
+
+        </div>
+    </mat-drawer>
     <mat-drawer-content>
-        <div class="create-course-container">
+        <div class="create-course-container" *ngIf="showDashboard.addCourse" >
             <app-create-course></app-create-course>
         </div>
+
+        
     </mat-drawer-content>
   </mat-drawer-container>
+
+  <app-show-courses></app-show-courses>
+
 <router-outlet></router-outlet>
