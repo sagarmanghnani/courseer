@@ -4,6 +4,8 @@ import { DatabaseOpService } from '../database-op.service';
 import { Constants } from '../Constants';
 import { User } from 'src/User';
 import { Courses } from 'src/Courses';
+import { UtilsService } from '../utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-course',
@@ -22,12 +24,15 @@ export class SearchCourseComponent implements OnInit {
   userMap:Map<string, User> = new Map();
   searchedQuery:string[] = [];
   constructor(
-    public databaseOp:DatabaseOpService
+    public databaseOp:DatabaseOpService,
+    public utilService:UtilsService,
+    public route:Router
   ) { }
 
   ngOnInit(): void {
     this.getAllCourses();
     this.getAllInstructors();
+    this.registerForBrowseCategory();
   }
 
   getAllInstructors(){
@@ -71,6 +76,7 @@ export class SearchCourseComponent implements OnInit {
   clearAllSearchVariable() {
     this.searchedInstructors = [];
     this.searchedCategories = [];
+    this.searchedQuery = [];
   }
 
   onInstructorSelect(event){
@@ -112,6 +118,17 @@ export class SearchCourseComponent implements OnInit {
   getAllCourses(){
     this.databaseOp.getAllCourses().subscribe(res => {
       this.searchedCourses = res;
+    })
+  }
+
+  registerForBrowseCategory(){
+    this.utilService.onCategorySelectEvent.subscribe(categoryObj => {
+      this.databaseOp.getCourseByCategoryId(categoryObj.category_id).subscribe(res => {
+        this.route.navigate(['browse-courses']);
+        this.searchedCourses = res;
+        this.searchedQuery = [];
+        this.searchedQuery.push(categoryObj.category_name);
+      })
     })
   }
   

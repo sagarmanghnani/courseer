@@ -29,6 +29,8 @@ import { ShowCoursesComponent } from './show-courses/show-courses.component';
 import { SearchCourseComponent } from './search-course/search-course.component';
 import { ClarityModule } from '@clr/angular';
 import {MatChipsModule} from '@angular/material/chips'
+import {MatDividerModule} from '@angular/material/divider'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,8 @@ import {MatChipsModule} from '@angular/material/chips'
     MatCheckboxModule,
     ClarityModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDividerModule
   ],
   providers: [
     DatabaseOpService

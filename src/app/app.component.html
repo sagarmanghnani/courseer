@@ -4,15 +4,29 @@
         Courseer
     </div>
     <div class="header-nav">
-        <a [routerLink] = "['']" routerLinkActive="active" class="nav-link nav-text"> Show Courses </a>
-        <a [routerLink] = "['']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
+        <a [routerLink] = "['browse-courses']" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
+        <a [routerLink] = "['create-courses']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
     </div>
-    <div class="header-actions">
+    <!-- <div class="header-actions">
         <a href="javascript://" class="nav-link nav-icon" aria-label="settings">
             <clr-icon shape="cog"></clr-icon>
         </a>
-    </div>
+    </div> -->
 </header>
+
+<div class="browse-category-dropdown" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" [hidden] = "!showCategoriesOnHover" >
+    <h2> Courses By Category </h2>
+    <mat-divider></mat-divider>
+    <div class="clr-row" *ngIf="allCategory?.length" >
+        <div *ngFor="let category of allCategory" class="clr-col-4 clr-col-sm-4 clr-col-md-3 clr-col-lg-2 category-select" (click)="onCategoryClick(category)">
+            {{category.name}}
+        </div>
+    </div>
+
+</div>
+
+
+
 
 
 

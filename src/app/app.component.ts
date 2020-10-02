@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { DatabaseOpService } from './database-op.service';
 import { Constants } from './Constants';
 import { Courses } from 'src/Courses';
+import { Category } from 'src/Category';
+import { UtilsService } from './utils.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +17,19 @@ export class AppComponent {
   showDashboard = {
     addCourse: true
   }
+
+  showCategoriesOnHover:boolean = false;
+  allCategory:Category[] = [];
+
+  arr = [1, 2, 3];
   constructor(
-    public databaseOpService:DatabaseOpService
+    public databaseOpService:DatabaseOpService,
+    public utilService:UtilsService,
+    public route:Router
   ){}
 
   ngOnInit() {
-    
+    this.getAllCategories();
   }
 
   showOptions(option:string){
@@ -29,6 +39,30 @@ export class AppComponent {
       }
     }
   }
+
+  showCategories(){
+    this.showCategoriesOnHover = true;
+  }
+  
+  hideCategories(){
+    this.showCategoriesOnHover = false;
+  }
+
+  getAllCategories(){
+    this.databaseOpService.getAllCatalogues().subscribe(res => {
+      this.allCategory = res;
+    })
+  }
+
+  onCategoryClick(category:Category){
+    this.utilService.onCategorySelectEvent.next({
+      category_id:category.id,
+      category_name:category.name
+    });
+    
+  }
+
+  
 
   
   

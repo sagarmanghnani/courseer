@@ -12,9 +12,15 @@ mat-card{
     height: 420px;
     max-height: 420px;
     padding: 0;
+    margin-bottom: 10px;
     mat-card-header{
         padding-left: 16px;
         padding-top: 16px;
+    }
+
+    mat-card-subtitle{
+        max-height: 20px;
+        overflow: hidden;
     }
 
     mat-card-content{

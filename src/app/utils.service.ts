@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment-timezone'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
-
+  onCategorySelectEvent:Subject<any> = new Subject();
   constructor(
     public snackBar:MatSnackBar
   ) { }
@@ -30,7 +31,9 @@ export class UtilsService {
   }
 
   public openSnackBar(message){
-    this.snackBar.open(message);
+    this.snackBar.open(message, null, {
+      duration:2000
+    });
   }
 
 }

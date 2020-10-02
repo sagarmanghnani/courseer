@@ -57,7 +57,7 @@ export class DatabaseOpService {
   }
 
   getCourseByCourseName(searchStr:string):Observable<Courses[]>{
-    return this.firestore.collection<Courses>("Courses", ref => ref.where('name', '>=', searchStr)).valueChanges({idField: 'id'}).pipe();
+    return this.firestore.collection<Courses>("Courses", ref => ref.where('title', '>=', searchStr)).valueChanges({idField: 'id'}).pipe();
   }
 
   getCourseByCategoryId(categoryId:string):Observable<Courses[]>{

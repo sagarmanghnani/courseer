@@ -1,7 +1,7 @@
 <div class="search-content-parent">
     <div class="search-content">
         <div class="search-container">
-            <input placeholder="Search your course here..." type = "text" [(ngModel)] = "searchString" (input) = "searchCourse($event)" [ngClass]="{'search-active': (searchedCategories.length || searchedInstructors.length)}" >
+            <input placeholder="Search your course here..." type = "text" [(ngModel)] = "searchString" (input) = "searchCourse()" [ngClass]="{'search-active': (searchedCategories.length || searchedInstructors.length)}" >
             <div *ngIf="searchedCategories.length && searchCriteria == 'Category'" class="search-suggestion"> 
                 <div *ngFor="let category of searchedCategories" class="suggestions" (click)="searchString = category.name; onItemClick(category.id)" >
                     {{category.name}}
