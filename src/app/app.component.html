@@ -1,21 +1,24 @@
 
+<header class="header-6">
+    <div class="branding">
+        Courseer
+    </div>
+    <div class="header-nav">
+        <a [routerLink] = "['']" routerLinkActive="active" class="nav-link nav-text"> Show Courses </a>
+        <a [routerLink] = "['']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
+    </div>
+    <div class="header-actions">
+        <a href="javascript://" class="nav-link nav-icon" aria-label="settings">
+            <clr-icon shape="cog"></clr-icon>
+        </a>
+    </div>
+</header>
 
 
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
-        <div (click)="showOptions('1')">
 
-        </div>
-    </mat-drawer>
-    <mat-drawer-content>
-        <div class="create-course-container" *ngIf="showDashboard.addCourse" >
-            <app-create-course></app-create-course>
-        </div>
 
-        
-    </mat-drawer-content>
-  </mat-drawer-container>
 
-  <app-show-courses></app-show-courses>
+
+  
 
 <router-outlet></router-outlet>

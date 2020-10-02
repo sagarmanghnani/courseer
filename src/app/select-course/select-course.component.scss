@@ -7,3 +7,29 @@ img{
     width: 100%;
     max-height: 200px;
 }
+
+mat-card{
+    padding: 0;
+    mat-card-header{
+        padding-left: 16px;
+        padding-top: 16px;
+    }
+
+    mat-card-content{
+        padding-left: 16px;
+        p{
+            color: gray;
+        }
+    }
+
+    mat-card-actions{
+        width: 100%;
+        margin-left: 0;
+        padding-left: 16px;
+        margin-bottom: 10px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+        text-align: right;
+        padding-bottom: 20px;
+    }
+}

@@ -26,6 +26,8 @@ import { SearchCoursesComponent } from './search-courses/search-courses.componen
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SelectCourseComponent } from './select-course/select-course.component';
 import { ShowCoursesComponent } from './show-courses/show-courses.component';
+import { SearchCourseComponent } from './search-course/search-course.component';
+import { ClarityModule } from '@clr/angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,7 @@ import { ShowCoursesComponent } from './show-courses/show-courses.component';
     SearchCoursesComponent,
     SelectCourseComponent,
     ShowCoursesComponent,
+    SearchCourseComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { ShowCoursesComponent } from './show-courses/show-courses.component';
     MatButtonModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ClarityModule
   ],
   providers: [
     DatabaseOpService

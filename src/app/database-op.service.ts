@@ -29,7 +29,7 @@ export class DatabaseOpService {
 
 
   getInstructors():Observable<User[]>{
-    return this.firestore.collection<User>("User", ref => ref.where('roles', 'array-contains', Constants.USER_ROLE_CONSTRUCTOR)).valueChanges({idField: 'id'}).pipe()
+    return this.firestore.collection<User>("User", ref => ref.where('roles', 'array-contains', Constants.USER_ROLE_INSTRUCTOR)).valueChanges({idField: 'id'}).pipe()
   }
 
   getAllCatalogues():Observable<Category[]> {
@@ -43,5 +43,23 @@ export class DatabaseOpService {
   getUserByUserId(userId:string):Observable<User>{
     return this.firestore.collection<User>("User").doc<User>(`User/${userId}`).valueChanges();
   }
+
+  getCategoryByPrefixes(searchStr:string):Observable<Category[]>{
+    return this.firestore.collection<Category>("Category", ref => ref.where('name', '>=', searchStr)).valueChanges({idField: 'id'}).pipe();
+  }
+
+  getInstructorByPrefixes(searchStr:string):Observable<User[]>{
+    return this.firestore.collection<User>("User", ref => {
+      let query = ref.where('name', '>=', searchStr);
+      query = query.where('roles', 'array-contains', Constants.USER_ROLE_INSTRUCTOR)
+      return query
+    }).valueChanges({idField: 'id'}).pipe();
+  }
+
+  getCourseByCourseName(searchStr:string):Observable<Courses[]>{
+    return this.firestore.collection<Courses>("Courses", ref => ref.where('name', '>=', searchStr)).valueChanges({idField: 'id'}).pipe();
+  }
+
+
 
 }
