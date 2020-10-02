@@ -1,39 +1,73 @@
-.search-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.search-content-parent{
     width: 80%;
     margin: auto;
-    .search-container{
+    .search-content{
         display: flex;
         justify-content: center;
-        margin-top: 30px;
         align-items: center;
-        flex-flow: column;
-        flex: 1;
-        padding-right: 20px;
-        input{
-            height: 50px;
-            width: 100%;
-            border-radius: 13px;
-            padding-left: 16px;
-            box-sizing: border-box;
+        margin: auto;
+        .search-container{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            align-items: center;
+            flex-flow: column;
+            flex: 1;
+            padding-right: 20px;
+            input{
+                height: 50px;
+                width: 100%;
+                // border-radius: 13px;
+                padding-left: 16px;
+                box-sizing: border-box;
+                border: 1px solid #dde3ef;
+            }
+        
+            .search-suggestion{
+                width: 100%;
+                background: white;
+                padding: 16px;
+                box-shadow: 1px 1px 4px 2px #dde3ef;
+                .suggestions{
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid gray;
+                }
+            }
         }
     
-        .search-suggestion{
-            width: 100%;
-            background: white;
-            padding: 16px;
-            box-shadow: 1px 1px 4px 2px #dde3ef;
-            .suggestions{
-                padding-top: 10px;
-                padding-bottom: 10px;
-                border-bottom: 1px solid gray;
-            }
+        .search-by-criteria{
+            margin-top: 30px;
+        }
+    
+        .not-found{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            font-size: 1.4rem;
         }
     }
 
-    .search-by-criteria{
-        margin-top: 30px;
+    .show-courses{
+        margin-top: 20px;
+    }
+
+    .chips{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        mat-chip{
+            background: var(--button-color);
+            color: white;
+        }
+    }
+
+    .search-active{
+        border: none;
+        border-bottom: 1px solid #dde3ef;
+        /* padding-bottom: 5px; */
+        margin-bottom: 2px;
+        box-shadow: 1px 1px 4px 2px #dde3ef;
+        border-radius: 0;
     }
 }

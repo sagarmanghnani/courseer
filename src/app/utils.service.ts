@@ -25,6 +25,10 @@ export class UtilsService {
     return moment().utc().format('YYYY-MM-DD[T]HH:mm:ss')
   }
 
+  public static prettyPrintDateTime(dateTime:string){
+    return moment(dateTime, 'YYYY-MM-DD[T]HH:mm:ss').format("MMM Do YY")
+  }
+
   public openSnackBar(message){
     this.snackBar.open(message);
   }

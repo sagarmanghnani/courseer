@@ -51,6 +51,6 @@ body{
 }
 
 .secondary-button{
-    border-color: var(--button-color);
+    border:none !important;
     color: var(--button-color);
 }

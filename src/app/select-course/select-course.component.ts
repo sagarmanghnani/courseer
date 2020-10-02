@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Courses } from 'src/Courses';
 import { User } from 'src/User';
 import { Constants } from '../Constants';
+import { UtilsService } from '../utils.service';
 
 @Component({
   selector: 'app-select-course',
@@ -12,7 +13,9 @@ export class SelectCourseComponent implements OnInit {
 
   @Input() showCourse:Courses;
   @Input() instructorInfo:User[];
-  constructor() { }
+  constructor(
+    public utilService:UtilsService
+  ) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes && changes['showCourse'] && changes['showCourse'].currentValue){
@@ -38,7 +41,12 @@ export class SelectCourseComponent implements OnInit {
     for (const instructor of this.instructorInfo) {
       str = `${str} ,${instructor.name}`;
     }
+    str = str.slice(2);
     return str;
+  }
+
+  prettyPrintDateTime(dateTime:string){
+    return UtilsService.prettyPrintDateTime(dateTime);
   }
 
 }

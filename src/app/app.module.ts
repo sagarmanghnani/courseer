@@ -28,6 +28,7 @@ import { SelectCourseComponent } from './select-course/select-course.component';
 import { ShowCoursesComponent } from './show-courses/show-courses.component';
 import { SearchCourseComponent } from './search-course/search-course.component';
 import { ClarityModule } from '@clr/angular';
+import {MatChipsModule} from '@angular/material/chips'
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,9 @@ import { ClarityModule } from '@clr/angular';
     MatSnackBarModule,
     MatSidenavModule,
     MatCheckboxModule,
-    ClarityModule
+    ClarityModule,
+    MatIconModule,
+    MatChipsModule
   ],
   providers: [
     DatabaseOpService

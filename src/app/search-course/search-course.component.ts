@@ -17,11 +17,27 @@ export class SearchCourseComponent implements OnInit {
   searchedCourses:Courses[] = [];
   searchString:string;
   searchCriteria:string = Constants.SEARCH_BY_CATEGORY;
+  selectedCategoriesMap:Map<string, Category> = new Map();
+  selectedInstructorsMap:Map<string, User> = new Map();
+  userMap:Map<string, User> = new Map();
+  searchedQuery:string[] = [];
   constructor(
     public databaseOp:DatabaseOpService
   ) { }
 
   ngOnInit(): void {
+    this.getAllCourses();
+    this.getAllInstructors();
+  }
+
+  getAllInstructors(){
+    this.databaseOp.getInstructors().subscribe(res => {
+      if(res && res.length){
+        res.forEach(user => {
+          this.userMap.set(user.id, user);
+        })
+      }
+    })
   }
 
   searchCourse(){
@@ -57,6 +73,53 @@ export class SearchCourseComponent implements OnInit {
     this.searchedCategories = [];
   }
 
+  onInstructorSelect(event){
+
+  }
+
+  onItemClick(itemId:string){
+    this.searchedQuery = [];
+    this.searchedQuery.push(this.searchString);
+    switch (this.searchCriteria){
+      case Constants.SEARCH_BY_INSTRUCTOR: {
+        this.databaseOp.getCourseByInstructorId(itemId).subscribe(res => {
+          this.searchedCourses = res;
+          this.searchedInstructors = [];
+        });
+        break;
+      }
+
+      case Constants.SEARCH_BY_CATEGORY: {
+        this.databaseOp.getCourseByCategoryId(itemId).subscribe(res => {
+          this.searchedCourses = res;
+          this.searchedCategories = [];
+        });
+        break;
+      }
+    }
+  }
+
+  getCourseInstructor(instructorIds:string[]){
+    let user:User[] = [];
+    for (const instructorId of instructorIds) {
+      if(this.userMap.has(instructorId)){
+        user.push(this.userMap.get(instructorId));
+      }
+    }
+    return user;
+  }
+
+  getAllCourses(){
+    this.databaseOp.getAllCourses().subscribe(res => {
+      this.searchedCourses = res;
+    })
+  }
+  
+  }
+
+
+
+
 
 
   
@@ -65,4 +128,4 @@ export class SearchCourseComponent implements OnInit {
 
 
 
-}
+

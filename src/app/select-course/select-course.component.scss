@@ -9,6 +9,8 @@ img{
 }
 
 mat-card{
+    height: 420px;
+    max-height: 420px;
     padding: 0;
     mat-card-header{
         padding-left: 16px;
@@ -17,8 +19,34 @@ mat-card{
 
     mat-card-content{
         padding-left: 16px;
+        padding-right: 16px;
+        margin-bottom: 5px;
         p{
             color: gray;
+        }
+
+        .course-timeline{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            .course-duration{
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .description{
+            max-height: 48px;
+            .description-content{
+                color: gray;
+                text-overflow: ellipsis;
+                max-height: 42px;
+                overflow: hidden;
+                white-space: break-spaces;
+                text-overflow: ellipsis;
+            }
         }
     }
 
@@ -30,6 +58,6 @@ mat-card{
         padding-bottom: 20px;
         box-sizing: border-box;
         text-align: right;
-        padding-bottom: 20px;
+        padding-bottom: 10px !important;
     }
 }

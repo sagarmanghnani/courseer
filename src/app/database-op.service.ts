@@ -60,6 +60,13 @@ export class DatabaseOpService {
     return this.firestore.collection<Courses>("Courses", ref => ref.where('name', '>=', searchStr)).valueChanges({idField: 'id'}).pipe();
   }
 
+  getCourseByCategoryId(categoryId:string):Observable<Courses[]>{
+    return this.firestore.collection<Courses>("Courses", ref => ref.where('category_ids', 'array-contains', categoryId)).valueChanges({idField: 'id'}).pipe();
+  }
+
+  getCourseByInstructorId(instructorId:string):Observable<Courses[]>{
+    return this.firestore.collection<Courses>("Courses", ref => ref.where('instructor_ids', 'array-contains', instructorId)).valueChanges({idField: 'id'}).pipe();
+  }
 
 
 }

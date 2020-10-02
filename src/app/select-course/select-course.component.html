@@ -3,12 +3,25 @@
         <div mat-card-avatar class="avatar-setting"></div>
         <mat-card-title> {{showCourse?.title}} </mat-card-title>
         <mat-card-subtitle>
-            {{getInstructorNames()}}
+            By {{getInstructorNames()}}
          </mat-card-subtitle>  
     </mat-card-header>
     <img [src]="getCourseImageSource()">
     <mat-card-content>
-        <p> {{showCourse?.description}} </p>
+        <div class="course-timeline">
+            <div class="course-duration">
+                <mat-icon>date_range</mat-icon> {{prettyPrintDateTime(showCourse?.start_date)}}
+            </div>
+
+            <div class="course-duration">
+                <mat-icon>av_timer</mat-icon> {{showCourse?.duration}} days
+            </div>
+
+        </div>
+        <div class="description">
+            <p class="description-content"> {{showCourse?.description}} </p>
+        </div>
+        
     </mat-card-content>
 
     <mat-card-actions>
