@@ -40,13 +40,6 @@
             margin-top: 30px;
         }
     
-        .not-found{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 70vh;
-            font-size: 1.4rem;
-        }
     }
 
     .show-courses{
@@ -69,5 +62,13 @@
         margin-bottom: 2px;
         box-shadow: 1px 1px 4px 2px #dde3ef;
         border-radius: 0;
+    }
+
+    .not-found{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        font-size: 1.4rem;
     }
 }

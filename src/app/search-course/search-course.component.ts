@@ -6,6 +6,7 @@ import { User } from 'src/User';
 import { Courses } from 'src/Courses';
 import { UtilsService } from '../utils.service';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-search-course',
@@ -26,7 +27,8 @@ export class SearchCourseComponent implements OnInit {
   constructor(
     public databaseOp:DatabaseOpService,
     public utilService:UtilsService,
-    public route:Router
+    public route:Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   ngOnInit(): void {
@@ -36,40 +38,51 @@ export class SearchCourseComponent implements OnInit {
   }
 
   getAllInstructors(){
+    this.ngxService.start();
     this.databaseOp.getInstructors().subscribe(res => {
+      this.ngxService.stop();
       if(res && res.length){
         res.forEach(user => {
           this.userMap.set(user.id, user);
         })
       }
-    })
+    },
+    (err) => {
+      this.ngxService.stop();
+    }
+    )
   }
 
   searchCourse(){
     this.searchedCategories = [];
     this.searchedCourses = [];
     this.searchedInstructors = [];
-    switch(this.searchCriteria) {
-      case Constants.SEARCH_BY_CATEGORY: {
-        this.databaseOp.getCategoryByPrefixes(this.searchString).subscribe(res => {
-          this.searchedCategories = res;
-        });
-        break;
+    this.searchedQuery = [];
+    if(this.searchString){
+      switch(this.searchCriteria) {
+        case Constants.SEARCH_BY_CATEGORY: {
+          this.databaseOp.getCategoryByPrefixes(this.searchString).subscribe(res => {
+            this.searchedCategories = res;
+          });
+          break;
+        }
+  
+        case Constants.SEARCH_BY_INSTRUCTOR: {
+          this.databaseOp.getInstructorByPrefixes(this.searchString).subscribe(res => {
+            this.searchedInstructors = res;
+          });
+          break;
+        }
+  
+        case Constants.SEARCH_BY_NAME: {
+          this.databaseOp.getCourseByCourseName(this.searchString).subscribe(res => {
+            this.searchedCourses = res;
+          });
+          break;
+        }
       }
-
-      case Constants.SEARCH_BY_INSTRUCTOR: {
-        this.databaseOp.getInstructorByPrefixes(this.searchString).subscribe(res => {
-          this.searchedInstructors = res;
-        });
-        break;
-      }
-
-      case Constants.SEARCH_BY_NAME: {
-        this.databaseOp.getCourseByCourseName(this.searchString).subscribe(res => {
-          this.searchedCourses = res;
-        });
-        break;
-      }
+    }else{
+      this.getAllCourses();
     }
   }
 
@@ -116,9 +129,15 @@ export class SearchCourseComponent implements OnInit {
   }
 
   getAllCourses(){
+    this.ngxService.start();
     this.databaseOp.getAllCourses().subscribe(res => {
+      this.ngxService.stop();
       this.searchedCourses = res;
-    })
+    },
+    (err) => {
+      this.ngxService.stop();
+    }
+    )
   }
 
   registerForBrowseCategory(){

@@ -30,6 +30,8 @@ import { SearchCourseComponent } from './search-course/search-course.component';
 import { ClarityModule } from '@clr/angular';
 import {MatChipsModule} from '@angular/material/chips'
 import {MatDividerModule} from '@angular/material/divider'
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import {MatDividerModule} from '@angular/material/divider'
     ClarityModule,
     MatIconModule,
     MatChipsModule,
-    MatDividerModule
+    MatDividerModule,
+    NgxUiLoaderModule
   ],
   providers: [
     DatabaseOpService
