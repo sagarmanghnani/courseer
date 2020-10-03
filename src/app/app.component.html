@@ -1,5 +1,5 @@
 
-<header class="header-6">
+<!-- <header class="header-6">
     <div class="branding branding-change">
         Courseer
     </div>
@@ -7,23 +7,44 @@
         <a [routerLink] = "['browse-courses']" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
         <a [routerLink] = "['create-courses']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
     </div>
-    <!-- <div class="header-actions">
-        <a href="javascript://" class="nav-link nav-icon" aria-label="settings">
-            <clr-icon shape="cog"></clr-icon>
+    
+</header> -->
+
+<clr-main-container>
+    <clr-header class="header-6">
+       <div class="branding">
+         <a class="nav-link">
+          <!-- <clr-icon shape="home"  size="24"></clr-icon> -->
+          <span class="title branding-change">Courseer</span>
         </a>
-    </div> -->
-</header>
-
-<div class="browse-category-dropdown" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" [hidden] = "!showCategoriesOnHover" >
-    <h2> Courses By Category </h2>
-    <mat-divider></mat-divider>
-    <div class="clr-row" *ngIf="allCategory?.length" >
-        <div *ngFor="let category of allCategory" class="clr-col-4 clr-col-sm-4 clr-col-md-3 clr-col-lg-2 category-select" (click)="onCategoryClick(category)">
-            {{category.name}}
+      </div>
+      <div class="header-nav" [clr-nav-level]="1">
+        <a [routerLink] = "['browse-courses']" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
+        <a [routerLink] = "['create-courses']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
+      </div>
+    </clr-header>
+    <div class="content-container">
+       
+        <div class="browse-category-dropdown" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" [hidden] = "!showCategoriesOnHover" >
+            <h2> Courses By Category </h2>
+            <mat-divider></mat-divider>
+            <div class="clr-row" *ngIf="allCategory?.length" >
+                <div *ngFor="let category of allCategory" class="clr-col-4 clr-col-sm-4 clr-col-md-3 clr-col-lg-2 category-select" (click)="onCategoryClick(category)">
+                    {{category.name}}
+                </div>
+            </div>
+        
         </div>
-    </div>
+        <router-outlet></router-outlet>
 
-</div>
+        <nav class="sidenav" [clr-nav-level]="2">
+            <a [routerLink] = "['browse-courses']" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
+            <a [routerLink] = "['create-courses']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
+        </nav>
+    </div>
+</clr-main-container>
+
+
 
 
 
@@ -34,5 +55,3 @@
 
 
   
-
-<router-outlet></router-outlet>

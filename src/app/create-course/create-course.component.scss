@@ -42,3 +42,15 @@ mat-form-field{
     border-radius: 5px;
     width: 100%;
 }
+
+@media screen and (max-width:568px){
+    .create-course-container{
+        width: 95% !important;
+        box-sizing: border-box;
+        margin-left: 10px;
+        margin-right: 10px;
+        h3{
+            font-size: 0.9rem;
+        }
+    }
+}

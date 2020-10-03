@@ -36,8 +36,12 @@
             }
         }
     
+
         .search-by-criteria{
             margin-top: 30px;
+            mat-form-field{
+                width: 100%;
+            }
         }
     
     }
@@ -70,5 +74,21 @@
         align-items: center;
         height: 50vh;
         font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width:568px){
+    .search-container{
+        width: 60%;
+    }
+
+    .search-by-criteria{
+        width: 40%;
+    }
+
+    .search-content-parent{
+        width: 100% !important;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }

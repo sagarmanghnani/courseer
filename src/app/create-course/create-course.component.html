@@ -7,13 +7,13 @@
 
    <form class="example-form">
 
-    <div>
+    <div class="clr-row">
       <h3 for="title"> Title </h3>
       <input type = "text" class="input-setup" [(ngModel)]="createNewCourse.title" name="title"> 
     </div>
 
-    <div class="row">
-      <div class="col-6 course-duration">
+    <div class="clr-row">
+      <div class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6 course-duration">
         <h3>Choose a date</h3>
         <mat-form-field appearance="fill">
           <input matInput [matDatepicker]="picker" [(ngModel)]="createNewCourse.start_date" name="created_date">
@@ -22,7 +22,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-6 course-duration">
+      <div class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6 course-duration">
         <h3>Choose duration for course</h3>
         <mat-form-field appearance="fill">
           <mat-select [(ngModel)]="createNewCourse.duration" name = "duration">
@@ -34,8 +34,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <div *ngIf="instructors?.length" class="col-6 course-duration" >
+    <div class="clr-row">
+      <div *ngIf="instructors?.length" class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6  course-duration" >
        <h3> Choose Instructor </h3> 
        <mat-form-field appearance="fill">
          <!-- <mat-label>Choose Instructor</mat-label> -->
@@ -45,7 +45,7 @@
        </mat-form-field>
       </div>
 
-      <div *ngIf="allCategory?.length" class="col-6 course-duration">
+      <div *ngIf="allCategory?.length" class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6  course-duration">
         <h3> Choose Categories </h3> 
         <mat-form-field appearance="fill">
           <!-- <mat-label>Select Categ</mat-label> -->

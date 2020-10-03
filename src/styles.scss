@@ -34,6 +34,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-right: 10px;
 }
 
+.col-12{
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
 .mat-input-wrapper {
     background: transparent;
 }
@@ -53,4 +59,7 @@ body{
 .secondary-button{
     border:none !important;
     color: var(--button-color);
+}
+app-create-course{
+    width: 100% !important;
 }
