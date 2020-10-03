@@ -48,6 +48,14 @@
     display: none;
 }
 
+.mobile-browse-category{
+    padding: .5rem 1.2rem;
+    color: var(--clr-vertical-nav-item-active-color, #666666);
+    text-decoration: underline;
+    padding-left: 1.6rem;
+}
+
+
 
 @media screen and (max-width:568px){
     .sidenav{

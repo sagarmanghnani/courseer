@@ -18,6 +18,7 @@ export class AppComponent {
     addCourse: true
   }
 
+  isScreenMobile:boolean = false;
   showCategoriesOnHover:boolean = false;
   allCategory:Category[] = [];
 
@@ -26,7 +27,11 @@ export class AppComponent {
     public databaseOpService:DatabaseOpService,
     public utilService:UtilsService,
     public route:Router
-  ){}
+  ){
+    if(window.innerWidth < 568){
+      this.isScreenMobile = true;
+    }
+  }
 
   ngOnInit() {
     this.getAllCategories();
@@ -60,6 +65,10 @@ export class AppComponent {
       category_name:category.name
     });
     
+  }
+
+  invertShowCategory(){
+    this.showCategoriesOnHover = !this.showCategoriesOnHover
   }
 
   

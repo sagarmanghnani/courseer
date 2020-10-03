@@ -24,8 +24,38 @@ export class CreateCourseComponent implements OnInit {
     this.getAllCategories();
   }
 
+
+  validateCourse(){
+    if(!this.createNewCourse.title){
+      this.utilService.openSnackBar("Please enter course title");
+      return;
+    }
+
+    if(!this.createNewCourse.start_date){
+      this.utilService.openSnackBar("Please enter course start date");
+      return;
+    }
+
+    if(!this.createNewCourse.category_ids || !this.createNewCourse.category_ids.length){
+      this.utilService.openSnackBar("Please select some category to continue");
+      return;
+    }
+
+    if(!this.createNewCourse.instructor_ids && !this.createNewCourse.instructor_ids.length){
+      this.utilService.openSnackBar("Please select some instructor to continue");
+      return;
+    }
+
+    if(!this.createNewCourse.duration){
+      this.utilService.openSnackBar("Please select duration to continue");
+      return;
+    }
+
+    this.createCourse();
+  }
+
   createCourse(){
-    let utcDatetime = UtilsService.sendUtcTime(this.createNewCourse.created_at);
+    let utcDatetime = UtilsService.sendUtcTime(this.createNewCourse.start_date);
     this.createNewCourse.start_date = utcDatetime;
     this.createNewCourse.created_at = UtilsService.currentDateTime();
     this.createNewCourse.updated_at = UtilsService.currentDateTime();

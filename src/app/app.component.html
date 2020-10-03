@@ -19,7 +19,12 @@
         </a>
       </div>
       <div class="header-nav" [clr-nav-level]="1">
-        <a [routerLink] = "['browse-courses']" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
+        <a [routerLink] = "['browse-courses']" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" (click)="invertShowCategory()" routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
+        <div *ngIf="allCategory.length && isScreenMobile" >
+            <div *ngFor="let category of allCategory" (click)="onCategoryClick(category)" class="mobile-browse-category">
+                {{category.name}}
+            </div>
+        </div>
         <a [routerLink] = "['create-courses']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
       </div>
     </clr-header>
@@ -38,7 +43,12 @@
         <router-outlet></router-outlet>
 
         <nav class="sidenav" [clr-nav-level]="2">
-            <a [routerLink] = "['browse-courses']" (mouseenter) = "showCategories()" (mouseleave) = "hideCategories()" routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
+            <a [routerLink] = "['browse-courses']" (click)="invertShowCategory()"  routerLinkActive="active" class="nav-link nav-text align-header"> Browse Courses <mat-icon>expand_more</mat-icon> </a>
+            <div *ngIf="allCategory.length" >
+                <div *ngFor="let category of allCategory" >
+                    {{category.name}}
+                </div>
+            </div>
             <a [routerLink] = "['create-courses']"  routerLinkActive="active" class="nav-link nav-text"> Create Course </a>
         </nav>
     </div>

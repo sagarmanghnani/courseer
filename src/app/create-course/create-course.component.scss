@@ -11,7 +11,7 @@ h3{
     margin-bottom: 0;
     color: var(--heading-color);
     margin-bottom: 5px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 .input-setup{
@@ -41,6 +41,10 @@ mat-form-field{
     border: 1px solid #d4d4d4;
     border-radius: 5px;
     width: 100%;
+}
+
+.title{
+    margin: 0;
 }
 
 @media screen and (max-width:568px){

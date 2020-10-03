@@ -22,7 +22,6 @@ import {MatSelectModule} from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { SearchCoursesComponent } from './search-courses/search-courses.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SelectCourseComponent } from './select-course/select-course.component';
 import { ShowCoursesComponent } from './show-courses/show-courses.component';
@@ -37,7 +36,6 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
   declarations: [
     AppComponent,
     CreateCourseComponent,
-    SearchCoursesComponent,
     SelectCourseComponent,
     ShowCoursesComponent,
     SearchCourseComponent,

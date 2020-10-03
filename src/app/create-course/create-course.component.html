@@ -7,14 +7,14 @@
 
    <form class="example-form">
 
-    <div class="clr-row">
-      <h3 for="title"> Title </h3>
+    <div class="clr-row title">
+      <h3 for="title"> Title * </h3>
       <input type = "text" class="input-setup" [(ngModel)]="createNewCourse.title" name="title"> 
     </div>
 
     <div class="clr-row">
       <div class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6 course-duration">
-        <h3>Choose a date</h3>
+        <h3>Choose a date *</h3>
         <mat-form-field appearance="fill">
           <input matInput [matDatepicker]="picker" [(ngModel)]="createNewCourse.start_date" name="created_date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6 course-duration">
-        <h3>Choose duration for course</h3>
+        <h3>Choose duration for course *</h3>
         <mat-form-field appearance="fill">
           <mat-select [(ngModel)]="createNewCourse.duration" name = "duration">
             <mat-option value="30"> 30 days </mat-option>
@@ -36,7 +36,7 @@
 
     <div class="clr-row">
       <div *ngIf="instructors?.length" class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6  course-duration" >
-       <h3> Choose Instructor </h3> 
+       <h3> Choose Instructor * </h3> 
        <mat-form-field appearance="fill">
          <!-- <mat-label>Choose Instructor</mat-label> -->
          <mat-select [(ngModel)]="createNewCourse.instructor_ids" name = "instructors" multiple name="select-instructor"> 
@@ -46,7 +46,7 @@
       </div>
 
       <div *ngIf="allCategory?.length" class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-6  course-duration">
-        <h3> Choose Categories </h3> 
+        <h3> Choose Categories * </h3> 
         <mat-form-field appearance="fill">
           <!-- <mat-label>Select Categ</mat-label> -->
           <mat-select [(ngModel)] = "createNewCourse.category_ids" multiple name = "select-category">
@@ -64,6 +64,6 @@
 
   </form>
 
-  <button mat-raised-button class="create-course" (click)="createCourse()"> Create Course </button>
+  <button mat-raised-button class="create-course" (click)="validateCourse()"> Create Course </button>
    
 </div>
